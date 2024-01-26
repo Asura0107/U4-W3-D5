@@ -95,6 +95,12 @@ public class Application {
             System.out.println("not found");
         }
 
+        //---------------rimuovi da catalogo-----------
+        System.out.println("-------------rimuovi da catalogo-------------");
+        cd.delete(3);
+
+
+
         em.close();
         emf.close();
 

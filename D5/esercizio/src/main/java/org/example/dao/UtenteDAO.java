@@ -24,4 +24,20 @@ public class UtenteDAO {
             System.out.println(e.getMessage());
         }
     }
+    public Utente findid(long Codice){
+        return em.find(Utente.class,Codice);
+    }
+
+    public void delete(long Codice){
+        Utente found=this.findid(Codice);
+        if (found!=null){
+            EntityTransaction transaction= em.getTransaction();
+            transaction.begin();
+            em.remove(found);
+            transaction.commit();
+            System.out.println("eliminato Codice: "+Codice);
+        }else {
+            System.out.println("non trovato");
+        }
+    }
 }

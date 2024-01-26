@@ -26,6 +26,22 @@ public class PrestitoDAO {
             System.out.println(e.getMessage());
         }
     }
+    public Prestito findid(long Codice){
+        return em.find(Prestito.class,Codice);
+    }
+
+    public void delete(long Codice){
+        Prestito found=this.findid(Codice);
+        if (found!=null){
+            EntityTransaction transaction= em.getTransaction();
+            transaction.begin();
+            em.remove(found);
+            transaction.commit();
+            System.out.println("eliminato Codice: "+Codice);
+        }else {
+            System.out.println("non trovato");
+        }
+    }
 
     public List<Prestito> findtessera(long numero) {
         TypedQuery<Prestito> query = em.createNamedQuery("findtessera", Prestito.class);
